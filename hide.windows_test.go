@@ -104,7 +104,7 @@ func TestIsHiddenWhenNotExists(t *testing.T) {
 
 func TestHideHidesWhenAlreadyHidden(t *testing.T) {
 	path := filepath.Join(tmpDir, "b")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -122,7 +122,7 @@ func TestHideHidesWhenAlreadyHidden(t *testing.T) {
 
 func TestUnhideNotHidesWhenAlreadyNotHidden(t *testing.T) {
 	path := filepath.Join(tmpDir, "a")
-	err := Unhide(path)
+	_, err := Unhide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -139,7 +139,7 @@ func TestUnhideNotHidesWhenAlreadyNotHidden(t *testing.T) {
 }
 
 func TestHideWhenNotExists(t *testing.T) {
-	err := Hide(filepath.Join(tmpDir, "notexists"))
+	_, err := Hide(filepath.Join(tmpDir, "notexists"))
 
 	if err == nil {
 		t.Errorf("error: \"%s\"", err)
@@ -148,7 +148,7 @@ func TestHideWhenNotExists(t *testing.T) {
 
 func TestHideHidesFile(t *testing.T) {
 	path := filepath.Join(tmpDir, "a")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -166,7 +166,7 @@ func TestHideHidesFile(t *testing.T) {
 
 func TestUnhideUnhidesFile(t *testing.T) {
 	path := filepath.Join(tmpDir, "b")
-	err := Unhide(path)
+	_, err := Unhide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -184,7 +184,7 @@ func TestUnhideUnhidesFile(t *testing.T) {
 
 func TestHideHidesDirectory(t *testing.T) {
 	path := filepath.Join(tmpDir, "c")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -202,7 +202,7 @@ func TestHideHidesDirectory(t *testing.T) {
 
 func TestHideUnhidesDirectory(t *testing.T) {
 	path := filepath.Join(tmpDir, "d")
-	err := Unhide(path)
+	_, err := Unhide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -220,7 +220,7 @@ func TestHideUnhidesDirectory(t *testing.T) {
 
 func TestNewFileHideHiddenHidesFile(t *testing.T) {
 	path := filepath.Join(tmpDir, "b")
-	err := NewFileHide(path, false).Hide()
+	_, err := NewFileHide(path, false).Hide()
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)

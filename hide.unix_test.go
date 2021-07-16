@@ -71,7 +71,7 @@ func TestIsHiddenWhenNotExists(t *testing.T) {
 
 func TestHiddenHidesWhenAlreadyHidden(t *testing.T) {
 	path := filepath.Join(tmpDir, ".b")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -86,7 +86,7 @@ func TestHiddenHidesWhenAlreadyHidden(t *testing.T) {
 
 func TestUnhideUnhidesWhenAlreadyNotHidden(t *testing.T) {
 	path := filepath.Join(tmpDir, "a")
-	err := Unhide(path)
+	_, err := Unhide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -100,7 +100,7 @@ func TestUnhideUnhidesWhenAlreadyNotHidden(t *testing.T) {
 }
 
 func TestHideWhenNotExists(t *testing.T) {
-	err := Hide(filepath.Join(tmpDir, "notexists"))
+	_, err := Hide(filepath.Join(tmpDir, "notexists"))
 
 	if err == nil {
 		t.Errorf("error: \"%s\"", err)
@@ -109,7 +109,7 @@ func TestHideWhenNotExists(t *testing.T) {
 
 func TestHiddenHidesFile(t *testing.T) {
 	path := filepath.Join(tmpDir, "a")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -124,7 +124,7 @@ func TestHiddenHidesFile(t *testing.T) {
 
 func TestUnhideUnhidesFile(t *testing.T) {
 	path := filepath.Join(tmpDir, ".b")
-	err := Unhide(path)
+	_, err := Unhide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -139,7 +139,7 @@ func TestUnhideUnhidesFile(t *testing.T) {
 
 func TestHiddenHidesDirectory(t *testing.T) {
 	path := filepath.Join(tmpDir, "c")
-	err := Hide(path)
+	_, err := Hide(path)
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)
@@ -154,7 +154,7 @@ func TestHiddenHidesDirectory(t *testing.T) {
 
 func TestHiddenCantHidesNoOverwrite(t *testing.T) {
 	path := filepath.Join(tmpDir, "d")
-	err := NewFileHide(path, false).Hide()
+	_, err := NewFileHide(path, false).Hide()
 
 	if err == nil {
 		t.Errorf("error: \"%s\"", err)
@@ -169,7 +169,7 @@ func TestHiddenCantHidesNoOverwrite(t *testing.T) {
 
 func TestHiddenHidesWithOverwrite(t *testing.T) {
 	path := filepath.Join(tmpDir, "d")
-	err := NewFileHide(path, true).Hide()
+	_, err := NewFileHide(path, true).Hide()
 
 	if err != nil {
 		t.Errorf("error: \"%s\"", err)

@@ -27,11 +27,11 @@ func IsHidden(path string) (bool, error) {
 }
 
 // Hide makes file or directory hidden
-func Hide(path string) error {
+func Hide(path string) (string, error) {
 	return NewFileHide(path, false).Hide()
 }
 
 // Unhide makes file or directory unhidden
-func Unhide(path string) error {
+func Unhide(path string) (string, error) {
 	return NewFileHide(path, false).Unhide()
 }
